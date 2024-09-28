@@ -1,0 +1,1 @@
+use /robot.txt to knw which url endpoits are not allowed to be scraped
