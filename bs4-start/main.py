@@ -12,8 +12,10 @@ soup = BeautifulSoup(yc_webpage, 'html.parser')
 
 # atags = soup.find(name='span', class_='timeline')
 atags = soup.find_all('span', class_='titleline')
-for idx,tgs in enumerate(atags):
-    title = tgs.find('a').getText()
-    print(f"{idx+1} : {title}")
-    
 
+article_score = soup.find_all(name='span', class_='score')
+
+for idx,tag,sc in zip(range(0, len(atags)), atags, article_score):
+    title = tag.find(name='a').getText()
+    link = tag.find(name='a').get('href')
+    print(f"{idx+1}: {title} ({sc.getText()}) - {link}")
